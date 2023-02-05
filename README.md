@@ -11,4 +11,4 @@ A small webapp that quizzes you on the 46 Japanese Hiragana characters. It displ
 
 The app should now be running on localhost.
 
-<img src="https://i.imgur.com/hPmeNBt.png" width="400" height="400" />
+<img src="https://i.imgur.com/iwVY8Fb.gif" width="400" height="400" />
