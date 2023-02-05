@@ -10,3 +10,5 @@ A small webapp that quizzes you on the 46 Japanese Hiragana characters. It displ
 4. Start the development server: `yarn dev`
 
 The app should now be running on localhost.
+
+<img src="https://i.imgur.com/hPmeNBt.png" width="400" height="400" />
