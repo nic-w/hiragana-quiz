@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const HiraganaContainer = styled.div`
-  width: 220px;
+  width: 350px;
   height: 220px;
   background-color: #323232;
   border-radius: 10px;

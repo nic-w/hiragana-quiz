@@ -1,5 +1,5 @@
-const getRandomNum = () => {
-  return Math.floor(Math.random() * 46);
+const getRandomNum = (max: number) => {
+  return Math.floor(Math.random() * max);
 };
 
 export default getRandomNum;
