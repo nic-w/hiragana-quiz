@@ -11,7 +11,7 @@ interface Props {
 const CheckboxContainer = styled.div`
   max-width: 500px;
   margin: auto;
-  margin-top: 9%;
+  margin-top: 90px;
   display: flex;
   flex-direction: column;
   gap: 20px;
