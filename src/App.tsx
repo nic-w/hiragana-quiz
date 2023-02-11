@@ -28,13 +28,12 @@ function App() {
     if (useAddtlHiragana) hiraganaList = [...hiraganaList, ...dakutenHandakutenRomaji];
     if (useCombinedHiragana) hiraganaList = [...hiraganaList, ...combinedHiragana];
 
-    const correctRomaji = character.romaji;
-    if (userInput === correctRomaji) {
+    if (userInput === character.romaji) {
       setCorrect(correct + 1);
       setReponse("Correct!");
     } else {
       setIncorrect(incorrect + 1);
-      setReponse(character.romaji);
+      setReponse(`${character.hiragana} = ${character.romaji}`);
     }
     setCharacter(hiraganaList[getRandomNum(hiraganaList.length)]);
   };

@@ -30,7 +30,7 @@ const Checkboxes = (props: Props) => {
             props.setUseAddtlHiragana(e.target.checked);
           }}
         />
-        Additional Hiragana
+        Diacritical
       </label>
       <label>
         <input
@@ -40,7 +40,7 @@ const Checkboxes = (props: Props) => {
             props.setUseCombinedHiragana(e.target.checked);
           }}
         />
-        Combined Hiragana
+        Combination
       </label>
     </CheckboxContainer>
   );
