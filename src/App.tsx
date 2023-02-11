@@ -6,6 +6,7 @@ import Scoreboard from "./components/Scoreboard";
 import Textbox from "./components/Textbox";
 import Response from "./components/Response";
 import Checkboxes from "./components/Checkboxes";
+import GithubIcon from "./components/GithubIcon";
 
 import getRandomNum from "./helpers/getRandomNum";
 import {
@@ -50,6 +51,7 @@ function App() {
         useCombinedHiragana={useCombinedHiragana}
         setUseCombinedHiragana={setUseCombinedHiragana}
       />
+      <GithubIcon />
     </div>
   );
 }
