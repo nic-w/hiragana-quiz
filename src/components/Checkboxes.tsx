@@ -8,6 +8,8 @@ interface Props {
   setUseAddtlHiragana: React.Dispatch<React.SetStateAction<boolean>>;
   useCombinedHiragana: boolean;
   setUseCombinedHiragana: React.Dispatch<React.SetStateAction<boolean>>;
+  useKatakana: boolean;
+  setUseKatakana: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const CheckboxContainer = styled.div`
@@ -38,7 +40,7 @@ const Checkboxes = (props: Props) => {
           checked={props.useHiragana}
           onChange={(e) => {
             e.preventDefault();
-            if (props.useAddtlHiragana || props.useCombinedHiragana) {
+            if (props.useAddtlHiragana || props.useCombinedHiragana || props.useKatakana) {
               props.setUseHiragana(e.target.checked);
             }
           }}
@@ -51,7 +53,7 @@ const Checkboxes = (props: Props) => {
           checked={props.useAddtlHiragana}
           onChange={(e) => {
             e.preventDefault();
-            if (props.useHiragana || props.useCombinedHiragana) {
+            if (props.useHiragana || props.useCombinedHiragana || props.useKatakana) {
               props.setUseAddtlHiragana(e.target.checked);
             }
           }}
@@ -64,12 +66,25 @@ const Checkboxes = (props: Props) => {
           checked={props.useCombinedHiragana}
           onChange={(e) => {
             e.preventDefault();
-            if (props.useAddtlHiragana || props.useHiragana) {
+            if (props.useAddtlHiragana || props.useHiragana || props.useKatakana) {
               props.setUseCombinedHiragana(e.target.checked);
             }
           }}
         />
         Combination
+      </CheckboxLabel>
+      <CheckboxLabel>
+        <input
+          type="checkbox"
+          checked={props.useKatakana}
+          onChange={(e) => {
+            e.preventDefault();
+            if (props.useAddtlHiragana || props.useHiragana || props.useCombinedHiragana) {
+              props.setUseKatakana(e.target.checked);
+            }
+          }}
+        />
+        Katakana
       </CheckboxLabel>
     </CheckboxContainer>
   );

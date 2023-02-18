@@ -13,6 +13,7 @@ import {
   hiraganaRomaji,
   dakutenHandakutenRomaji,
   combinedHiragana,
+  katakanaRomaji,
 } from "./constants/hiraganaRomaji";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
   const [useHiragana, setUseHiragana] = useState<boolean>(true);
   const [useAddtlHiragana, setUseAddtlHiragana] = useState<boolean>(false);
   const [useCombinedHiragana, setUseCombinedHiragana] = useState<boolean>(false);
+  const [useKatakana, setUseKatakana] = useState<boolean>(false);
 
   const [questions, setQuestions] = useState<Question[]>([]);
 
@@ -38,8 +40,9 @@ function App() {
     if (useHiragana) selectedArrays = selectedArrays.concat(hiraganaRomaji);
     if (useAddtlHiragana) selectedArrays = selectedArrays.concat(dakutenHandakutenRomaji);
     if (useCombinedHiragana) selectedArrays = selectedArrays.concat(combinedHiragana);
+    if (useKatakana) selectedArrays = selectedArrays.concat(katakanaRomaji);
     setQuestions(selectedArrays);
-  }, [useHiragana, useAddtlHiragana, useCombinedHiragana]);
+  }, [useHiragana, useAddtlHiragana, useCombinedHiragana, useKatakana]);
 
   const checkSubmitAndUpdateNum = (userInput: string) => {
     if (userInput === character.romaji) {
@@ -65,6 +68,8 @@ function App() {
         setUseAddtlHiragana={setUseAddtlHiragana}
         useCombinedHiragana={useCombinedHiragana}
         setUseCombinedHiragana={setUseCombinedHiragana}
+        useKatakana={useKatakana}
+        setUseKatakana={setUseKatakana}
       />
       <GithubIcon />
     </div>
