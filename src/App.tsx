@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 import Hiragana from "./components/Hiragana";
@@ -16,19 +16,32 @@ import {
 } from "./constants/hiraganaRomaji";
 
 function App() {
-  const [correct, setCorrect] = useState(0);
-  const [incorrect, setIncorrect] = useState(0);
+  // Initial page load always uses random original hiragana
   const [character, setCharacter] = useState(hiraganaRomaji[getRandomNum(46)]);
   const [response, setReponse] = useState("Type and press Enter");
+  const [correct, setCorrect] = useState(0);
+  const [incorrect, setIncorrect] = useState(0);
 
+  const [useHiragana, setUseHiragana] = useState<boolean>(true);
   const [useAddtlHiragana, setUseAddtlHiragana] = useState<boolean>(false);
   const [useCombinedHiragana, setUseCombinedHiragana] = useState<boolean>(false);
 
-  const checkSubmitAndUpdateNum = (userInput: string) => {
-    let hiraganaList = [...hiraganaRomaji];
-    if (useAddtlHiragana) hiraganaList = [...hiraganaList, ...dakutenHandakutenRomaji];
-    if (useCombinedHiragana) hiraganaList = [...hiraganaList, ...combinedHiragana];
+  const [questions, setQuestions] = useState<Question[]>([]);
 
+  interface Question {
+    hiragana: string;
+    romaji: string;
+  }
+
+  useEffect(() => {
+    let selectedArrays: Question[] = [];
+    if (useHiragana) selectedArrays = selectedArrays.concat(hiraganaRomaji);
+    if (useAddtlHiragana) selectedArrays = selectedArrays.concat(dakutenHandakutenRomaji);
+    if (useCombinedHiragana) selectedArrays = selectedArrays.concat(combinedHiragana);
+    setQuestions(selectedArrays);
+  }, [useHiragana, useAddtlHiragana, useCombinedHiragana]);
+
+  const checkSubmitAndUpdateNum = (userInput: string) => {
     if (userInput === character.romaji) {
       setCorrect(correct + 1);
       setReponse("Correct!");
@@ -36,7 +49,7 @@ function App() {
       setIncorrect(incorrect + 1);
       setReponse(`${character.hiragana} = ${character.romaji}`);
     }
-    setCharacter(hiraganaList[getRandomNum(hiraganaList.length)]);
+    setCharacter(questions[getRandomNum(questions.length)]);
   };
 
   return (
@@ -46,6 +59,8 @@ function App() {
       <Response response={response} />
       <Textbox checkSubmit={checkSubmitAndUpdateNum} />
       <Checkboxes
+        useHiragana={useHiragana}
+        setUseHiragana={setUseHiragana}
         useAddtlHiragana={useAddtlHiragana}
         setUseAddtlHiragana={setUseAddtlHiragana}
         useCombinedHiragana={useCombinedHiragana}

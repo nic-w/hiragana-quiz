@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 interface Props {
+  useHiragana: boolean;
+  setUseHiragana: React.Dispatch<React.SetStateAction<boolean>>;
   useAddtlHiragana: boolean;
   setUseAddtlHiragana: React.Dispatch<React.SetStateAction<boolean>>;
   useCombinedHiragana: boolean;
@@ -19,29 +21,56 @@ const CheckboxContainer = styled.div`
   align-items: center;
 `;
 
+const CheckboxLabel = styled.label`
+  width: 180px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  padding-left: 80px;
+`;
+
 const Checkboxes = (props: Props) => {
   return (
     <CheckboxContainer>
-      <label>
+      <CheckboxLabel>
+        <input
+          type="checkbox"
+          checked={props.useHiragana}
+          onChange={(e) => {
+            e.preventDefault();
+            if (props.useAddtlHiragana || props.useCombinedHiragana) {
+              props.setUseHiragana(e.target.checked);
+            }
+          }}
+        />
+        Hiragana
+      </CheckboxLabel>
+      <CheckboxLabel>
         <input
           type="checkbox"
           checked={props.useAddtlHiragana}
           onChange={(e) => {
-            props.setUseAddtlHiragana(e.target.checked);
+            e.preventDefault();
+            if (props.useHiragana || props.useCombinedHiragana) {
+              props.setUseAddtlHiragana(e.target.checked);
+            }
           }}
         />
         Diacritical
-      </label>
-      <label>
+      </CheckboxLabel>
+      <CheckboxLabel>
         <input
           type="checkbox"
           checked={props.useCombinedHiragana}
           onChange={(e) => {
-            props.setUseCombinedHiragana(e.target.checked);
+            e.preventDefault();
+            if (props.useAddtlHiragana || props.useHiragana) {
+              props.setUseCombinedHiragana(e.target.checked);
+            }
           }}
         />
         Combination
-      </label>
+      </CheckboxLabel>
     </CheckboxContainer>
   );
 };
