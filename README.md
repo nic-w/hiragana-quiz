@@ -1,8 +1,8 @@
 # Hiragana Quiz
 
-A small webapp that quizzes you on the 46 Japanese Hiragana characters. It displays a randomly selected Hiragana character and you type the corresponding Romaji. If you answer incorrectly, the app will display the correct Romaji.
+Quiz app for the 46 Hiragana characters with options for additional Japanese characters. It displays a randomly selected Hiragana/Katakana character and you type the corresponding Romaji. If you answer incorrectly, the app will display the correct answer.
 
-[https://nic-w.github.io/](https://nic-w.github.io/)
+Temporarily hosted on GitHub Pages at [https://nic-w.github.io/](https://nic-w.github.io/)
 
 ## Running the App Locally
 
@@ -13,7 +13,7 @@ A small webapp that quizzes you on the 46 Japanese Hiragana characters. It displ
 
 The app should now be running on localhost.
 
-<img src="https://i.imgur.com/iwVY8Fb.gif" width="400" height="400" />
+<img src="https://i.imgur.com/deOR5dd.gif" width="400" height="400" />
 
 Hiragana Chart:
 
